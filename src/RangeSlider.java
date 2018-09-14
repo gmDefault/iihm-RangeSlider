@@ -1,10 +1,17 @@
 import javax.swing.JSlider;
 
-public class RangeSlider implements _RangeSlider {
+public class RangeSlider extends JSlider implements _RangeSlider {
 
+	//              -extent-
+	// |-----------[-------]---|
+	// min	     value        max
+	// the minimum value of the slider range [min;max]
 	private int minValue;
+	// the maximum value of the slider range [min;max]
 	private int maxValue;
+	// the min value of the selected range
 	private int value;
+	// the width of the selected range
 	private int extent;
 	
 	
