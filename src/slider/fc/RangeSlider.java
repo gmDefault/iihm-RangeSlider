@@ -1,10 +1,12 @@
+package slider.fc;
 import javax.swing.JSlider;
 
 public class RangeSlider extends JSlider implements _RangeSlider {
 
 	//              -extent-
-	// |-----------[-------]---|
+	// |-----------[--------]---|
 	// min	     value        max
+	
 	// the minimum value of the slider range [min;max]
 	private int minValue;
 	// the maximum value of the slider range [min;max]
@@ -53,6 +55,13 @@ public class RangeSlider extends JSlider implements _RangeSlider {
 	@Override
 	public int getExtent() {
 		return this.extent;
+	}
+	
+	public RangeSlider(int minValue, int maxValue, int value, int extent) {
+		this.minValue=minValue;
+		this.maxValue=maxValue;
+		this.value=value;
+		this.extent=extent;
 	}
 	
 

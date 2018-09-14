@@ -1,3 +1,4 @@
+package slider.fc;
 
 public interface _RangeSlider {
  
