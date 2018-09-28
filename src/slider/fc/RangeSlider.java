@@ -1,7 +1,7 @@
 package slider.fc;
 import javax.swing.JSlider;
 
-public class RangeSlider extends JSlider implements _RangeSlider {
+public class RangeSlider extends JSlider implements _RangeSlider{
 
 	//              -extent-
 	// |-----------[--------]---|

@@ -7,27 +7,30 @@ import java.awt.Point;
 import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.Shape;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Rectangle2D;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JComponent;
 import javax.swing.JSlider;
-import javax.swing.plaf.basic.BasicGraphicsUtils;
 import javax.swing.plaf.basic.BasicSliderUI;
 
 import java.awt.event.*;
+import javax.swing.plaf.basic.BasicSliderUI.TrackListener;
+
 import slider.fc.RangeSlider;
 
 public class RangeSliderUI extends BasicSliderUI {
 
+	
 	private Rectangle minRectangle;
 	private Rectangle maxRectangle;
+
 	private Rectangle trackRect;
 	private int triangle_width;
 	private RangeSlider rs; 
 	
 	private int posXRect1;
 	private int posXRect2;
+
 
 	private Boolean movingRect1 = false;
 	private Boolean movingRect2 = false;
@@ -36,9 +39,13 @@ public class RangeSliderUI extends BasicSliderUI {
 
 		super(b);
 		
-		rs = (RangeSlider) b;
 		
 
+
+		rs= (RangeSlider) b;
+
+		minRectangle = new Rectangle(17,0,10,20);
+		maxRectangle = new Rectangle(100,0,10,20);
 	}
 
 @Override
@@ -101,10 +108,9 @@ public class RangeSliderUI extends BasicSliderUI {
 	}
 	
 	@Override
-	protected TrackListener createTrackListener(JSlider slider) {
-		return new MyTrackListener();
-		
-	}
+    protected TrackListener createTrackListener(JSlider slider) {
+        return new MyTrackListener();
+    }
 	
 	private class MyTrackListener extends TrackListener{
 		private Point Point_depart;
@@ -145,5 +151,8 @@ public class RangeSliderUI extends BasicSliderUI {
 			movingRect1 = false;
 			movingRect2 = false;
 		}
+
 	}
 }
+
+
