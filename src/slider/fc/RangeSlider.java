@@ -29,7 +29,7 @@ public class RangeSlider extends JSlider implements _RangeSlider {
 	
 	@Override
 	public void setValue(int value) {
-		this.value = value;	
+		this.value = value;
 	}
 
 	@Override
