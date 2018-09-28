@@ -6,25 +6,29 @@ import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.Shape;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Rectangle2D;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JComponent;
 import javax.swing.JSlider;
-import javax.swing.plaf.basic.BasicGraphicsUtils;
 import javax.swing.plaf.basic.BasicSliderUI;
+import javax.swing.plaf.basic.BasicSliderUI.TrackListener;
+
 import slider.fc.RangeSlider;
 
 public class RangeSliderUI extends BasicSliderUI {
 
+	
 	private Rectangle minRectangle;
 	private Rectangle maxRectangle;
+	private RangeSlider rs;
 	private int slider_width = 300;
 	private int triangle_width = slider_width / 10;
 
 	public RangeSliderUI(JSlider b) {
 
 		super(b);
+
+		rs= (RangeSlider) b;
 
 		minRectangle = new Rectangle(17,0,10,20);
 		maxRectangle = new Rectangle(100,0,10,20);
@@ -67,12 +71,18 @@ public class RangeSliderUI extends BasicSliderUI {
 
 	@Override
 	public void paint(Graphics g, JComponent c) {
-
+		
 		super.paint(g, c);
 
 		
 		// paintThumb pour rectqngle
 	}
+	
+	@Override
+    protected TrackListener createTrackListener(JSlider slider) {
+        return new MyTrackListener();
+    }
+
 	
 	
 //	public void paintTrack(Graphics g) {
@@ -96,4 +106,19 @@ public class RangeSliderUI extends BasicSliderUI {
 //
 //	}
 
+	
+	private class MyTrackListener extends TrackListener{
+		
+		 public void mouseDragged(MouseEvent e) {
+	            System.out.println("dragged");
+	        }
+		 
+		 public void mouseClicked(MouseEvent e) {
+			 System.out.println("clicked");
+		 }
+		
+		
+	}
 }
+
+
