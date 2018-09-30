@@ -8,7 +8,7 @@ public class Home {
 	private int lat;
 	private int lon;
 
-	static ArrayList<Home> homeList;
+	static ArrayList<Home> homeList = new ArrayList<Home>();
 
 	public Home(int nbPiece, int valeurBien, int lat, int lon) {
 		this.nbPiece = nbPiece;
@@ -18,6 +18,7 @@ public class Home {
 	}
 
 	static void fillHome(int nbHome) {
+
 		for(int i = 0; i < nbHome; i++){
 			int nbPiece = (int) (1 + (Math.random()* 4));
 			int valeurBien = (int) (40000 + (Math.random()* 60000));
@@ -26,4 +27,21 @@ public class Home {
 			homeList.add(new Home(nbPiece, valeurBien, lat, lon));
 		}
 	}
+	
+	public int getNbPiece() {
+		return this.nbPiece;
+	}
+	
+	public int getValeurBien() {
+		return this.valeurBien;
+	}
+	
+	public int getLat() {
+		return this.lat;
+	}
+	
+	public int getLon() {
+		return this.lon;
+	}
+
 }

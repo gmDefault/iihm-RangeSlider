@@ -34,9 +34,6 @@ public class RangeSliderUI extends BasicSliderUI {
 	public RangeSliderUI(JSlider b) {
 
 		super(b);
-		
-		
-
 
 		rs= (RangeSlider) b;
 
