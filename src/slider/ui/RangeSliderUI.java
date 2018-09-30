@@ -3,7 +3,6 @@ package slider.ui;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.Shape;
@@ -11,12 +10,9 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JComponent;
 import javax.swing.JSlider;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
+
 import javax.swing.plaf.basic.BasicSliderUI;
 
-import java.awt.event.*;
-import javax.swing.plaf.basic.BasicSliderUI.TrackListener;
 
 import slider.fc.RangeSlider;
 
@@ -26,7 +22,6 @@ public class RangeSliderUI extends BasicSliderUI {
 	private Rectangle minRectangle;
 	private Rectangle maxRectangle;
 
-	private Rectangle trackRect;
 	private RangeSlider rs; 
 	
 	private int posXRect1;

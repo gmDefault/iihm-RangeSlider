@@ -1,5 +1,4 @@
 package slider.fc;
-import java.util.LinkedList;
 
 import javax.swing.JSlider;
 import javax.swing.event.EventListenerList;
@@ -10,6 +9,10 @@ public class RangeSlider extends JSlider  implements _RangeSlider{
 	// |-----------[--------]---|
 	// min	     value        max
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// the minimum value of the slider range [min;max]
 	private int minValue;
 	// the maximum value of the slider range [min;max]

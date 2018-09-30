@@ -32,22 +32,37 @@ public class JRangeSlider extends JPanel {
 
 		this.Title = new JLabel(Title);
 
-		this.Min = new JLabel("Min :" + value);
+		this.Min = new JLabel("Min :" + value +"   ");
 
 		this.Max = new JLabel("Max :" + (value + extent));
 
 		JPanel jp = new JPanel();
+		JPanel jp1 = new JPanel();
 		JPanel jp2 = new JPanel();
-		JPanel jpminmax = new JPanel();
+		JPanel jp3 = new JPanel();
+
 
 		setLayout(new BorderLayout());
-
-		jp.add(this.Title);
+		jp1.setLayout(new BoxLayout(jp1, BoxLayout.LINE_AXIS));
+		
+		jp1.add(this.Title);
+		
+		jp2.setLayout(new BoxLayout(jp2, BoxLayout.LINE_AXIS));
+		
 		jp2.add(rs);
-		jp.add(jp2, BorderLayout.PAGE_END);
-		jpminmax.add(this.Min, BorderLayout.EAST);
-		jpminmax.add(this.Max, BorderLayout.WEST);
-		jp.add(jpminmax);
+		
+		
+		jp3.setLayout(new BoxLayout(jp3, BoxLayout.LINE_AXIS));
+		
+		jp3.add(this.Min,BorderLayout.LINE_START);
+		jp3.add(this.Max,BorderLayout.LINE_END);
+		
+		
+		jp.setLayout(new BoxLayout(jp, BoxLayout.PAGE_AXIS));
+		
+		jp.add(jp1);
+		jp.add(jp2);
+		jp.add(jp3);
 
 		add(jp);
 
@@ -71,6 +86,6 @@ public class JRangeSlider extends JPanel {
 
 	public void redraw() {
 		this.Max.setText("Max : "+(rs.getValue()+rs.getExtent()));
-		this.Min.setText("Min : "+rs.getValue());
+		this.Min.setText("Min : "+rs.getValue()+"   ");
 	}
 }
