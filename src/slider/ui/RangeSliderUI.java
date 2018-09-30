@@ -25,7 +25,6 @@ public class RangeSliderUI extends BasicSliderUI {
 	private Rectangle maxRectangle;
 
 	private Rectangle trackRect;
-	private int triangle_width;
 	private RangeSlider rs; 
 	
 	private int posXRect1;
@@ -70,7 +69,6 @@ public class RangeSliderUI extends BasicSliderUI {
 		posXRect2 = rs.getValue() + rs.getExtent();
 	
 
-		triangle_width = this.tickRect.width / 10;		
 
 		x = new int[] { xPositionForValue(posXRect1), xPositionForValue(posXRect1),
 				(int) ( xPositionForValue(posXRect1) + 10 ) };
@@ -92,7 +90,6 @@ public class RangeSliderUI extends BasicSliderUI {
 
 		y = new int[] { tickRect.y - 20, tickRect.y , tickRect.y - 10  };
 
-		g.fillRect(xPositionForValue(posXRect2) ,tickRect.y - 20, 10, 20);
 		shape = new Polygon(x, y, 3);
 		graphics.setColor(Color.GREEN);
 		graphics.fill(shape);
@@ -121,19 +118,19 @@ public class RangeSliderUI extends BasicSliderUI {
 			if(movingRect1) {
 				float Value = ((float) e.getX())*( (float) rs.getMax()- (float) rs.getMin())/((float) tickRect.width);
 				int ValueCasted = (int) Value + rs.getMin();
-				if( ValueCasted <= rs.getMax() && ValueCasted >= 0 && ValueCasted <= (rs.getValue() + rs.getExtent() - 20 )) {
-					System.out.println(Value);
+				if( ValueCasted <= rs.getMax() && ValueCasted >= 0 && ValueCasted <= (rs.getValue() + rs.getExtent() )) {
 					rs.setExtent(rs.getValue() - ValueCasted + rs.getExtent()); 
 					rs.setValue(ValueCasted );
+					System.out.println(rs.getValue() + " " + rs.getExtent());
 					rs.repaint();
 				}
 			}
 			else if (movingRect2 ) {
 				float Extent = ((float) e.getX())*( (float) rs.getMax()- (float) rs.getMin())/((float) tickRect.width);
 				int ExtentCasted = (int) Extent + rs.getMin();
-				if( ExtentCasted <= rs.getMax() && ExtentCasted >= 0 && ExtentCasted - rs.getValue() >= 0 ){
+				if( ExtentCasted <= rs.getMax() && ExtentCasted >= 0 && ExtentCasted - rs.getValue()  >= 0 ){
 					rs.setExtent(ExtentCasted - rs.getValue() );
-					System.out.println(ExtentCasted + " " + rs.getValue() + " " + rs.getExtent());
+					System.out.println(rs.getValue() + " " + rs.getExtent());
 					rs.repaint();
 				}
 			}
@@ -144,7 +141,6 @@ public class RangeSliderUI extends BasicSliderUI {
 				movingRect1 = true;
 			}
 			else if (maxRectangle.contains(e.getX(), e.getY())) {
-				System.out.println(e.getX() + " " + e.getY());
 				movingRect2 = true;
 
 			}

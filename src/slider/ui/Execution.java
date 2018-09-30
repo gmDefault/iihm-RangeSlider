@@ -12,7 +12,7 @@ public class Execution {
 		JFrame J = new JFrame();
 		J.setVisible(true);
 		
-		RangeSlider s = new RangeSlider(0, 900, 4,200);
+		RangeSlider s = new RangeSlider(0, 10, 4,3);
 		
 		RangeSliderUI js = new RangeSliderUI(s);
 //		JSlider js = new JSlider();
