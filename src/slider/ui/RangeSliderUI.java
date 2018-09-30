@@ -77,7 +77,6 @@ public class RangeSliderUI extends BasicSliderUI {
 		
 		minRectangle = new Rectangle(xPositionForValue(posXRect1) -10,tickRect.y - 20, 20, 20);
 		
-		g.fillRect(xPositionForValue(posXRect1) +10,tickRect.y - 20, -10, 10);
 
 		Shape shape = new Polygon(x, y, 3);
 		graphics.setColor(Color.GREEN);
@@ -98,12 +97,13 @@ public class RangeSliderUI extends BasicSliderUI {
 		
 		maxRectangle = new Rectangle(xPositionForValue(posXRect2) ,tickRect.y - 20, 10, 20);
 
-		
 	}
 
 	@Override
 	public void paint(Graphics g, JComponent c) {
 		super.paint(g, c);
+		g.drawString("Min : " + rs.getValue() + " Max : " + (rs.getValue() + rs.getExtent()), tickRect.x , tickRect.y + 20);
+
 	}
 	
 	@Override

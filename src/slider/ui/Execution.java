@@ -13,12 +13,11 @@ public class Execution {
 		J.setVisible(true);
 		
 		RangeSlider s = new RangeSlider(0, 10, 4,3);
-		
+		J.setSize(200, 100);
 		RangeSliderUI js = new RangeSliderUI(s);
 //		JSlider js = new JSlider();
 		s.setUI(js);
 		J.add(s);
-		J.pack();
 
 	}
 	
