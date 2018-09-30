@@ -1,7 +1,10 @@
 package slider.fc;
-import javax.swing.JSlider;
+import java.util.LinkedList;
 
-public class RangeSlider extends JSlider implements _RangeSlider{
+import javax.swing.JSlider;
+import javax.swing.event.EventListenerList;
+
+public class RangeSlider extends JSlider  implements _RangeSlider{
 
 	//              -extent-
 	// |-----------[--------]---|
@@ -15,6 +18,8 @@ public class RangeSlider extends JSlider implements _RangeSlider{
 	private int value;
 	// the width of the selected range
 	private int extent;
+	
+    private final EventListenerList listeners = new EventListenerList();
 	
 	
 	@Override
@@ -30,11 +35,23 @@ public class RangeSlider extends JSlider implements _RangeSlider{
 	@Override
 	public void setValue(int value) {
 		this.value = value;
+		for(_RangeSliderListener listener : getRangeSliderListeners()) {
+			listener.MinChanged(value);
+		}
+		for(_RangeSliderListener listener : getRangeSliderListeners()) {
+			listener.MaxChanged(value);
+		}
 	}
 
 	@Override
 	public void setExtent(int extent) {
 		this.extent = extent;
+		for(_RangeSliderListener listener : getRangeSliderListeners()) {
+			listener.MaxChanged(value);
+		}
+		for(_RangeSliderListener listener : getRangeSliderListeners()) {
+			listener.MinChanged(value);
+		}
 	}
 
 	@Override
@@ -63,6 +80,20 @@ public class RangeSlider extends JSlider implements _RangeSlider{
 		this.value=value;
 		this.extent=extent;
 	}
+
+	public void addRangeSliderListener(_RangeSliderListener _RangeSliderListener) {
+        listeners.add(_RangeSliderListener.class, _RangeSliderListener);
+	}
+	
+	public void removeRangeSliderListener(_RangeSliderListener _RangeSliderListener) {
+        listeners.remove(_RangeSliderListener.class, _RangeSliderListener);
+	}
+	
+	public _RangeSliderListener[] getRangeSliderListeners() {
+		return listeners.getListeners(_RangeSliderListener.class);
+	}
+
+
 	
 
 }

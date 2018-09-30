@@ -11,6 +11,8 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JComponent;
 import javax.swing.JSlider;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.plaf.basic.BasicSliderUI;
 
 import java.awt.event.*;
@@ -55,7 +57,9 @@ public class RangeSliderUI extends BasicSliderUI {
         return (int) quotient;
 	    }
 
-	
+	public RangeSlider getRangeSlider() {
+		return this.rs;
+	}
 
 	
 	@Override
@@ -157,6 +161,8 @@ public class RangeSliderUI extends BasicSliderUI {
 		}
 
 	}
+
+
 }
 
 
