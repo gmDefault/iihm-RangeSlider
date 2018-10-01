@@ -24,7 +24,7 @@ public class JRangeSlider extends JPanel {
 
 	public JRangeSlider(String Title, int minValue, int maxValue, int value, int extent) {
 
-		rs = new RangeSlider(minValue, maxValue, value, extent);
+		this.rs = new RangeSlider(minValue, maxValue, value, extent);
 
 		rsUI = new RangeSliderUI(rs);
 
@@ -83,9 +83,13 @@ public class JRangeSlider extends JPanel {
 		});
 
 	}
-
+	
 	public void redraw() {
 		this.Max.setText("Max : "+(rs.getValue()+rs.getExtent()));
 		this.Min.setText("Min : "+rs.getValue()+"   ");
+	}
+	
+	public RangeSlider getRangeSlider() {
+		return this.rs;
 	}
 }

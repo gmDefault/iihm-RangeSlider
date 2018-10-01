@@ -114,7 +114,7 @@ public class RangeSliderUI extends BasicSliderUI {
 			if(movingRect1) {
 				float Value = ((float) e.getX())*( (float) rs.getMax()- (float) rs.getMin())/((float) tickRect.width);
 				int ValueCasted = (int) Value + rs.getMin();
-				if( ValueCasted <= rs.getMax() && ValueCasted >= 0 && ValueCasted <= (rs.getValue() + rs.getExtent() )) {
+				if( ValueCasted <= rs.getMax() && ValueCasted >= rs.getMin() && ValueCasted <= (rs.getValue() + rs.getExtent() )) {
 					rs.setExtent(rs.getValue() - ValueCasted + rs.getExtent()); 
 					rs.setValue(ValueCasted );
 					System.out.println(rs.getValue() + " " + rs.getExtent());
@@ -124,7 +124,7 @@ public class RangeSliderUI extends BasicSliderUI {
 			else if (movingRect2 ) {
 				float Extent = ((float) e.getX())*( (float) rs.getMax()- (float) rs.getMin())/((float) tickRect.width);
 				int ExtentCasted = (int) Extent + rs.getMin();
-				if( ExtentCasted <= rs.getMax() && ExtentCasted >= 0 && ExtentCasted - rs.getValue()  >= 0 ){
+				if( ExtentCasted <= rs.getMax() && ExtentCasted >= rs.getMin() && ExtentCasted - rs.getValue()  >= 0 ){
 					rs.setExtent(ExtentCasted - rs.getValue() );
 					System.out.println(rs.getValue() + " " + rs.getExtent());
 					rs.repaint();
