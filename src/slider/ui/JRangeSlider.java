@@ -92,4 +92,8 @@ public class JRangeSlider extends JPanel {
 	public RangeSlider getRangeSlider() {
 		return this.rs;
 	}
+	
+	public RangeSliderUI getRangeSliderUI() {
+		return this.rsUI;
+	}
 }

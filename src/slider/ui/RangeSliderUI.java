@@ -147,7 +147,7 @@ public class RangeSliderUI extends BasicSliderUI {
 			System.out.println(Value);
 		}
 		
-		public void mouseReleased(MouseEvent e) {
+		public void mouseReleased(MouseEvent e ){
 			movingRect1 = false;
 			movingRect2 = false;
 		}
