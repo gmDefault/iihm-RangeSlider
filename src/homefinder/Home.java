@@ -10,6 +10,14 @@ public class Home {
 
 	static ArrayList<Home> homeList = new ArrayList<Home>();
 
+	/**
+	 * Constructor
+	 * 
+	 * @param nbPiece    the number of rooms
+	 * @param valeurBien the price
+	 * @param lat        the latitude
+	 * @param lon        the longitude
+	 */
 	public Home(int nbPiece, int valeurBien, int lat, int lon) {
 		this.nbPiece = nbPiece;
 		this.valeurBien = valeurBien;
@@ -17,29 +25,34 @@ public class Home {
 		this.lon = lon;
 	}
 
+	/**
+	 * Initialize home object with random homes (number of rooms, price, location)
+	 * 
+	 * @param nbHome, the number of offers (homes)
+	 */
 	static void fillHome(int nbHome) {
 
-		for(int i = 0; i < nbHome; i++){
-			int nbPiece = (int) (1 + (Math.random()* 4));
-			int valeurBien = (int) (40000 + (Math.random()* 60000));
-			int lat = (int) (Math.random()* 400);
-			int lon = (int) (Math.random()* 600);
+		for (int i = 0; i < nbHome; i++) {
+			int nbPiece = (int) (1 + (Math.random() * 4));
+			int valeurBien = (int) (40000 + (Math.random() * 60000));
+			int lat = (int) (Math.random() * 400);
+			int lon = (int) (Math.random() * 600);
 			homeList.add(new Home(nbPiece, valeurBien, lat, lon));
 		}
 	}
-	
+
 	public int getNbPiece() {
 		return this.nbPiece;
 	}
-	
+
 	public int getValeurBien() {
 		return this.valeurBien;
 	}
-	
+
 	public int getLat() {
 		return this.lat;
 	}
-	
+
 	public int getLon() {
 		return this.lon;
 	}

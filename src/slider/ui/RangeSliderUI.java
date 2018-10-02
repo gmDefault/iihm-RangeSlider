@@ -18,10 +18,12 @@ import slider.fc.RangeSlider;
 
 public class RangeSliderUI extends BasicSliderUI {
 
-	
+	// hit-box of the left range slider bound 
 	private Rectangle minRectangle;
+	//hit-box of the right range slider bound
 	private Rectangle maxRectangle;
-
+	
+	// range slider model
 	private RangeSlider rs; 
 	
 	private int posXRect1;
@@ -37,11 +39,9 @@ public class RangeSliderUI extends BasicSliderUI {
 
 		rs= (RangeSlider) b;
 
-		minRectangle = new Rectangle(17,0,10,20);
-		maxRectangle = new Rectangle(100,0,10,20);
 	}
 
-@Override
+	@Override
 	protected int xPositionForValue( int value )    {
         int min = rs.getMin();
         int max = rs.getMax();
@@ -65,7 +65,7 @@ public class RangeSliderUI extends BasicSliderUI {
 		posXRect2 = rs.getValue() + rs.getExtent();
 	
 
-
+		// list of points to create the left green triangle
 		x = new int[] { xPositionForValue(posXRect1), xPositionForValue(posXRect1),
 				(int) ( xPositionForValue(posXRect1) + 10 ) };
 
@@ -80,6 +80,7 @@ public class RangeSliderUI extends BasicSliderUI {
 		graphics.setColor(Color.GRAY);
 		graphics.draw(shape);
 
+		// list of points to create the right green triangle
 		x = new int[] { xPositionForValue(posXRect2) + 10, xPositionForValue(posXRect2) + 10 ,
 				(int) ( xPositionForValue(posXRect2) ) };
 
@@ -111,22 +112,24 @@ public class RangeSliderUI extends BasicSliderUI {
 	
 		public void mouseDragged(MouseEvent e) {
 			
+			// if we start dragging from the left triangle
 			if(movingRect1) {
 				float Value = ((float) e.getX())*( (float) rs.getMax()- (float) rs.getMin())/((float) tickRect.width);
 				int ValueCasted = (int) Value + rs.getMin();
+				//if we are not hitting a border or the other triangle 
 				if( ValueCasted <= rs.getMax() && ValueCasted >= rs.getMin() && ValueCasted <= (rs.getValue() + rs.getExtent() )) {
 					rs.setExtent(rs.getValue() - ValueCasted + rs.getExtent()); 
 					rs.setValue(ValueCasted );
-					System.out.println(rs.getValue() + " " + rs.getExtent());
 					rs.repaint();
 				}
 			}
+			// else if we start dragging from the right triangle
 			else if (movingRect2 ) {
 				float Extent = ((float) e.getX())*( (float) rs.getMax()- (float) rs.getMin())/((float) tickRect.width);
 				int ExtentCasted = (int) Extent + rs.getMin();
+				//if we are not hitting a border or the other triangle 
 				if( ExtentCasted <= rs.getMax() && ExtentCasted >= rs.getMin() && ExtentCasted - rs.getValue()  >= 0 ){
 					rs.setExtent(ExtentCasted - rs.getValue() );
-					System.out.println(rs.getValue() + " " + rs.getExtent());
 					rs.repaint();
 				}
 			}
@@ -140,11 +143,6 @@ public class RangeSliderUI extends BasicSliderUI {
 				movingRect2 = true;
 
 			}
-		}
-		
-		public void mouseClicked(MouseEvent e) {
-			float Value = ((float) e.getX() + (float) rs.getMin())*( (float) rs.getMax()- (float) rs.getMin())/((float) tickRect.width);
-			System.out.println(Value);
 		}
 		
 		public void mouseReleased(MouseEvent e ){

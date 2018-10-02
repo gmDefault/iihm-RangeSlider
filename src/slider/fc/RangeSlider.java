@@ -5,8 +5,8 @@ import javax.swing.event.EventListenerList;
 
 public class RangeSlider extends JSlider  implements _RangeSlider{
 
-	//              -extent-
-	// |-----------[--------]---|
+	//              <---extent--->
+	// |-----------[-------------]---|
 	// min	     value        max
 	
 	/**
@@ -77,6 +77,16 @@ public class RangeSlider extends JSlider  implements _RangeSlider{
 		return this.extent;
 	}
 	
+	/**
+	 * Constructor of the rangeslider model
+	 * 
+	 * <---extent---> |-----------[-------------]---| min value max
+	 * 
+	 * @param minValue the minimum of the range slider
+	 * @param maxValue the maximum of the range slider
+	 * @param value    the left value of the range slider
+	 * @param extent   the width of the selected range
+	 */
 	public RangeSlider(int minValue, int maxValue, int value, int extent) {
 		this.minValue=minValue;
 		this.maxValue=maxValue;
