@@ -32,6 +32,7 @@ public class RangeSliderUI extends BasicSliderUI {
 
 	private Boolean movingRect1 = false;
 	private Boolean movingRect2 = false;
+	private Boolean movingLeft = true;
 	
 	public RangeSliderUI(JSlider b) {
 
@@ -111,7 +112,6 @@ public class RangeSliderUI extends BasicSliderUI {
 	private class MyTrackListener extends TrackListener{
 	
 		public void mouseDragged(MouseEvent e) {
-			
 			// if we start dragging from the left triangle
 			if(movingRect1) {
 				float Value = ((float) e.getX())*( (float) rs.getMax()- (float) rs.getMin())/((float) tickRect.width);
@@ -123,7 +123,7 @@ public class RangeSliderUI extends BasicSliderUI {
 					rs.repaint();
 				}
 			}
-			// else if we start dragging from the right triangle
+				// else if we start dragging from the right triangle
 			else if (movingRect2 ) {
 				float Extent = ((float) e.getX())*( (float) rs.getMax()- (float) rs.getMin())/((float) tickRect.width);
 				int ExtentCasted = (int) Extent + rs.getMin();
@@ -136,12 +136,22 @@ public class RangeSliderUI extends BasicSliderUI {
 		}
 		
 		public void mousePressed(MouseEvent e) {
+		if(rs.getValue() >= ((rs.getMin() + rs.getMax()/2))) {
+
 			if(minRectangle.contains(e.getX(), e.getY())) {
 				movingRect1 = true;
 			}
 			else if (maxRectangle.contains(e.getX(), e.getY())) {
 				movingRect2 = true;
-
+			}
+		}
+		else {
+			if (maxRectangle.contains(e.getX(), e.getY())) {
+				movingRect2 = true;
+			}
+			else if(minRectangle.contains(e.getX(), e.getY())) {
+				movingRect1 = true;
+			}
 			}
 		}
 		
