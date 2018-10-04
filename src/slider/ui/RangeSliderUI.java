@@ -64,7 +64,8 @@ public class RangeSliderUI extends BasicSliderUI {
 
 		posXRect1 = rs.getValue();
 		posXRect2 = rs.getValue() + rs.getExtent();
-	
+		g.setColor(Color.GREEN);
+		g.fillRect(xPositionForValue(posXRect1), tickRect.y - 11, (int) ( 5 + ((float) rs.getExtent()*tickRect.width)/(rs.getMax()-rs.getMin())), 2);
 
 		// list of points to create the left green triangle
 		x = new int[] { xPositionForValue(posXRect1), xPositionForValue(posXRect1),

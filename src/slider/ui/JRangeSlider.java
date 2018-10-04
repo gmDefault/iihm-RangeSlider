@@ -1,6 +1,7 @@
 package slider.ui;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 
 import javax.swing.*;
 
@@ -37,7 +38,7 @@ public class JRangeSlider extends JPanel {
 		rs.setUI(rsUI);
 
 		this.Title = new JLabel(Title);
-
+		this.Title.setFont(new Font(Font.DIALOG, Font.BOLD, 15));
 		this.Min = new JLabel("Min :" + value + "   ");
 
 		this.Max = new JLabel("Max :" + (value + extent));
